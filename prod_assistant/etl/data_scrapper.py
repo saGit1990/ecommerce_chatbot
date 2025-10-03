@@ -23,7 +23,7 @@ class FlipkartScraper:
         os.makedirs(self.output_dir, exist_ok=True)
         self.edge_driver_path = Path('C:\\Users\\Suel.Abbasi\\OneDrive - Shell\\Desktop\\Projects\\ecommerce_chatbot\\msedgedriver.exe')
 
-    def get_top_reviews(self, product_url, count=2):
+    def get_top_reviews(self, product_url, count):
         """Get Top Reviews for the product at the given URL."""
         options = Options()
         options.add_argument('--headless')
@@ -73,7 +73,7 @@ class FlipkartScraper:
         driver.quit() 
         return " || ".join(reviews) if reviews else "No reviews found"
 
-    def scrape_flipkart_product(self, query, max_products=1, review_count=2):
+    def scrape_flipkart_product(self, query, max_products, review_count):
         """Scrape Flipkart products based on a search query"""
         options = Options()
         options.add_argument('--headless')
