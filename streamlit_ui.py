@@ -3,6 +3,8 @@ import streamlit as st
 from prod_assistant.etl.data_scrapper import FlipkartScraper
 from prod_assistant.etl.data_ingestion import DataIngestion
 import os
+import ssl
+ssl._create_default_https_context = ssl._create_unverified_context # disabling ssl verification
 
 flipkart_scraper = FlipkartScraper()
 output_path = "data/product_reviews.csv"
@@ -40,7 +42,7 @@ if st.button("🚀 Start Scraping"):
         final_data = []
         for query in product_inputs:
             st.write(f"🔍 Searching for: {query}")
-            results = flipkart_scraper.scrape_flipkart_product(query, max_products=max_products, review_count=review_count)
+            results = flipkart_scraper.scrape_flipkart_products(query, max_products=max_products, review_count=review_count)
             final_data.extend(results)
 
         unique_products = {}

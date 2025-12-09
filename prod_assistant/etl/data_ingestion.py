@@ -21,10 +21,10 @@ class DataIngestion:
     def _load_env(self):
         """Load and validate required environment variables"""
         load_dotenv() 
-        required_vars = ["GOOGLE_API_KEY", "ASTRA_DB_API_ENDPOINT", "ASTRA_DB_APPLICATION_TOKEN", "ASTRA_DB_KEYSPACE"]
-        missing_vars = [var for var in required_vars if var not in os.getenv() is None] 
+        required_vars = ["GOOGLE_API_KEY","GROQ_API_KEY", "ASTRA_DB_API_ENDPOINT", "ASTRA_DB_APPLICATION_TOKEN", "ASTRA_DB_KEYSPACE"]
+        missing_vars = [var for var in required_vars if os.getenv(var) is None]
         if missing_vars:
-            raise EnvironmentError(f'Missing required environment variables: {", ".join(missing_vars)}') 
+            raise EnvironmentError(f'Missing required environment variables: {", ".join(missing_vars)}')
         
         self.google_api_key = os.getenv('GOOGLE_API_KEY')
         self.db_api_endpoint = os.getenv('ASTRA_DB_API_ENDPOINT')
