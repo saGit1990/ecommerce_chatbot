@@ -81,7 +81,7 @@ class Retriever:
         return output
     
 if __name__=='__main__':
-    user_query = "Can you suggest good budget iPhone under 1,00,00 INR?"
+    user_query = "Can you suggest good budget under 1,00,00 INR?"
     
     retriever_obj = Retriever()
     

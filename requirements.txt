@@ -15,5 +15,6 @@ streamlit==1.49.1
 undetected-chromedriver
 uvicorn
 structlog
+ragas
 
 -e .
